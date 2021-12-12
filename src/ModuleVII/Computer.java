@@ -1,12 +1,13 @@
-package ModuleVI;
+package ModuleVII;
 
-public class Computer {
+public abstract class Computer {
+
     protected String name;
-    private String type;
-    private int hdd;
-    private int ram;
+    protected String type;
+    protected int hdd;
+    protected int ram;
     protected boolean state;
-    protected String test = "test";
+    protected int volume;
 
     public Computer(String name, String type, int hdd, int ram) {
         this.name = name;
@@ -14,14 +15,18 @@ public class Computer {
         this.hdd = hdd;
         this.ram = ram;
         this.state = false;
+        this.volume = 0;
     }
 
     public String getName() {
         return name;
     }
-    public String test(){
-        return this.name;
-    }
+
+    public abstract void volumeUp(int level);
+    public abstract void volumeDown(int level);
+
+    public abstract void volumeUp();
+    public abstract void volumeDown();
 
     public void setName(String name) {
         this.name = name;
@@ -64,7 +69,12 @@ public class Computer {
         return this.state;
     }
 
-    public void printMe(){
+    public void printMe() {
         System.out.println("Hello");
     }
+
+    public int volumeLevel(){
+        return this.volume;
+    }
+
 }
