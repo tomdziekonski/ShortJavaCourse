@@ -3,13 +3,15 @@ package ModuleII;
 public class Klasy {
 
     public static void main(String[] args) {
+        User user = new User("Tom", "1@me.pl", 17);
+        Bug bugger = new Bug("System is crashing", 1, user);
 
-        Bug bugger = new Bug("System is crashing", "tester@about.pl", 1);
-        bugger.setIsBugOpen(false);
-        bugger.bugDetails();
-        bugger.bugStatus();
+        System.out.println(user.getEmail());
         bugger.byWhomCreated();
         System.out.println("The priority of the bug is " + bugger.getBugPriority());
 
+        System.out.println(bugger);
+        bugger.setIsBugOpen(false);
+        System.out.println(bugger);
     }
 }

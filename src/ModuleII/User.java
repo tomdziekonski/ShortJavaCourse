@@ -1,5 +1,7 @@
 package ModuleII;
 
+import java.util.Objects;
+
 public class User {
     String name;
     String email;
@@ -8,10 +10,9 @@ public class User {
 
     public User(String provideName, String provideEmail, int provideAge) {
         this.name = provideName;
-        this.email = provideEmail;
+        setEmail(provideEmail);
         this.age = provideAge;
         this.isUserAnAdult = isUserAnAdult();
-
     }
 
     public boolean isUserAnAdult() {
@@ -21,6 +22,9 @@ public class User {
         return false;
     }
 
+    public String getEmail() {
+        return this.email;
+    }
 
     public String toString() {
         if (this.isUserAnAdult()) {
@@ -45,5 +49,26 @@ public class User {
 
     public int addYearsToAge(int number) {
         return this.age + number;
+    }
+
+    public void setEmail(String email) {
+        if (!email.contains("@")) {
+            System.out.println("Incorrect email address");
+        } else {
+            this.email = email;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age && isUserAnAdult == user.isUserAnAdult && Objects.equals(name, user.name) && Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, email, age, isUserAnAdult);
     }
 }
