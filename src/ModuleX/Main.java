@@ -120,6 +120,7 @@ public class Main {
         System.out.println("Zadanie 1");
 
         computers.stream().filter(cmp -> cmp.getRam().getAmount() > 128).forEach(System.out::println);
+        computers.stream().filter(comp -> comp.getRam().getAmount() > 128).count();
 
         System.out.println("----");
         System.out.println("Zadanie 2");
